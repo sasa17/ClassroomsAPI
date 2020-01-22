@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateAPIView, DestroyAPIView
-from .serializers import ClassroomListSerializer, ClassroomDetailSerializer, ClassroomCreateUpdateSerializer
+from .serializers import *
 from classes.models import Classroom
 
 class ClassroomListAPIView(ListAPIView):
@@ -30,3 +30,25 @@ class ClassroomDeleteView(DestroyAPIView):
     serializer_class = ClassroomListSerializer
     lookup_field = 'id'
     lookup_url_kwarg = 'classroom_id'
+
+
+class UserCreateAPIView(CreateAPIView):
+    serializer_class = UserCreateSerializer
+
+
+class StudentCreateAPIView(CreateAPIView):
+    serializer_class = StudentCreateSerializer
+
+
+class StudentUpdateView(RetrieveUpdateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentUpdateSerializer
+    lookup_field = 'id'
+    lookup_url_kwarg = 'student_id'
+
+
+class StudentDeleteView(DestroyAPIView):
+    queryset = Student.objects.all()
+    lookup_field = 'id'
+    lookup_url_kwarg = 'student_id'
+

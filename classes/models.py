@@ -18,7 +18,7 @@ class Student(models.Model):
 	name = models.CharField(max_length=120)
 	dob = models.DateField()
 	exam_grade = models.DecimalField(max_digits=5, decimal_places=2)
-	classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+	classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name="students")
 	GENDERS = (
 	('M', 'Male'),
     ('F', 'Female'),
